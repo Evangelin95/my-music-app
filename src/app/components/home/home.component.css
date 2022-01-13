@@ -1,0 +1,39 @@
+.container-home
+{
+    background-color: #4159AF;
+    width: 100%;
+    margin: 0 auto !important;
+    max-width: 1920px;
+    text-align: center;
+    min-height: 100vh;
+    font-family: 'Titan One', cursive;
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+}
+.example-spacer {
+    flex: 1 1 auto;
+}
+.header-app
+{
+    background-color: #4159AF;
+    color: #ffffff;
+}
+.name-app
+{
+    font-weight: 800;
+}
+.btn-user
+{
+    border-radius: 13px;
+    padding: 5px;
+    border: unset;
+    display: flex;
+    align-items: center;
+}
+.name-user,.name-app
+{
+    padding: 0 10px;
+    font-family: 'Titan One', cursive;
+    color: #ffffff;
+}
