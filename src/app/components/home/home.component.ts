@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserprofileService } from 'src/app/services/userprofile.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   
-  constructor( ) { }
+  constructor(private profileservice: UserprofileService) { }
+
+  nombre = "";
 
   ngOnInit(): void {
 
@@ -15,8 +18,15 @@ export class HomeComponent implements OnInit {
     let url = hash.substring(1).split("&");
     /*console.log(url)*/
     let token = url[0].split("=")[1];
-    console.log(token)
-    
+    console.log(token);
+
+    this.profileservice.GetProfileUser(token).subscribe(response=>{
+      console.log(response);
+      this.nombre = response.display_name;
+    },
+    error=>{
+      console.log(error);
+    })
   }
 
 }

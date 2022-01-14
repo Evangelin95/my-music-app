@@ -9,6 +9,9 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
+
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -23,7 +26,9 @@ import {MatIconModule} from '@angular/material/icon';
     RouterModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    HttpClientModule
   ],
 
   providers: [],

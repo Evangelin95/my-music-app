@@ -37,3 +37,14 @@
     font-family: 'Titan One', cursive;
     color: #ffffff;
 }
+
+.main
+{
+    width: 100%;
+    margin: 0 auto !important;
+    max-width: 1920px;
+    text-align: center;
+    padding: 7% 10%;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
