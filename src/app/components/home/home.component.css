@@ -75,7 +75,7 @@
     margin: 0 auto !important;
     max-width: 1920px;
     text-align: center;
-    padding: 7%;
+    padding: 5% 7%;
     box-sizing: border-box;
     min-height: 100vh;
 }
@@ -90,6 +90,7 @@
 {
     flex-direction: column-reverse;
     align-items: center;
+    margin-bottom: -3%;
 }
 table {
     width: 100%;
@@ -113,6 +114,34 @@ table {
       display: flex;
       margin-left: 17px;
   }
+  .letters-data
+  {
+      font-size: small;
+      text-align: left;
+      color: #ffffff;
+      font-family: 'Titan One', cursive;
+  }
+  .numeral
+  {
+      padding: 2% !important;
+  }
+  .iconsplaylist
+  {
+    background-color: #ff73a6;
+    border-radius: 24px;
+    height: 48px;
+    width: 48px;
+    font-size: 48px;
+  }
+  .iconheart
+  {
+    height: 48px;
+    width: 48px;
+    font-size: 48px;
+    padding: 0 1%;
+  }
+
+
 
 
 
@@ -137,6 +166,8 @@ table {
     max-width: 1920px;
     margin-bottom: 8px;
 }
+
+
 
 
 
