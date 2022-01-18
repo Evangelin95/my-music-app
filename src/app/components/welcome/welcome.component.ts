@@ -11,7 +11,7 @@ export class WelcomeComponent implements OnInit {
   constructor(  ) { }
 
   ngOnInit(): void {
-    
+    localStorage.removeItem('access_token');
   }
 
   login() {

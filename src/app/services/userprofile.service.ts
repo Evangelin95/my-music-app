@@ -17,7 +17,7 @@ export class UserprofileService {
     this.httpoptions.headers = this.httpoptions.headers.set('Accept', 'application/json');
    }
 
-  GetProfileUser(token:string):Observable<any>{
+  getProfileUser(token:string):Observable<any>{
     this.httpoptions.headers = this.httpoptions.headers.set('Authorization', 'Bearer ' +token);
 
     return this.http.get('https://api.spotify.com/v1/me', this.httpoptions)

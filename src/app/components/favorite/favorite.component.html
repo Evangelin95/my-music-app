@@ -1,0 +1,81 @@
+<!--<div class="container-home">
+    <mat-toolbar class="header-app">
+      <img src="/assets/iconmusic.png" width="50px">
+      <span class="name-app"><a routerLink="/home" style="text-decoration: none; color: #ffffff;">MyMusicApp</a></span>
+      <span class="example-spacer"></span>
+      <button class="btn-user">
+        <mat-icon>person</mat-icon>
+        <span class="name-user">{{nombre}}</span>
+        <button class="btn-desplegable" mat-icon-button [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu">
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu class="list-options" #menu="matMenu">
+          <button mat-menu-item>
+            <span class="name-user-mobile">{{nombre}}</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>favorite</mat-icon>
+            <span><a style="text-decoration: none; color: inherit;" routerLink="/favorite">Tus favoritos</a></span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>exit_to_app</mat-icon>
+            <span><a style="text-decoration: none; color: inherit;" routerLink="/welcome">Cerrar sesión</a></span>
+          </button>
+        </mat-menu>
+      </button>
+    </mat-toolbar>
+  
+    <section class="main">
+      <mat-card class="example-card">
+        <mat-card-title-group class="header-playlist">
+          <mat-card-title class="title-playlist">{{nameplaylist}}</mat-card-title>
+          <mat-card-subtitle class="description-playlist">{{desplaylist}}</mat-card-subtitle>
+          <mat-card-subtitle>Type list</mat-card-subtitle>
+          <img style="margin-bottom: 5%;" mat-card-lg-image src={{imgplaylist}}>
+        </mat-card-title-group>
+        <mat-card-content style="display: flex;">
+          <mat-icon class="iconsplaylist">play_circle_outline</mat-icon>
+          <mat-icon class="iconheart">favorite_border</mat-icon>
+        </mat-card-content>
+      </mat-card>
+  
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        
+        <ng-container matColumnDef="#">
+          <th style="padding: 0 12px; color: #ffffff; font-family: 'Titan One', cursive; font-weight: bold;" mat-header-cell *matHeaderCellDef> # </th>
+          <td style="padding: 0 12px;" mat-cell *matCellDef="let element; let i = index"> 
+            <div class="letters-data numeral">{{i + 1}}</div></td>
+        </ng-container>
+  
+        
+        <ng-container matColumnDef="TÍTULO">
+          <th mat-header-cell *matHeaderCellDef style="text-align: left; color: #ffffff; font-family: 'Titan One', cursive; font-weight: bold;"> TÍTULO</th>
+          <mat-cell *matCellDef="let element" style="display: flex; padding: 0 4px;">
+            <img [src]="element.track?.album?.images[2].url" style="height: 40px;width: 40px;" />
+            <div>
+              <div class="letters-data" >{{element.track?.album?.name}}</div>
+              <div class="letters-data" >{{element.track?.artists[0].name}},{{element.track?.artists[1]?.name}},{{element.track?.artists[2]?.name}}</div>
+            </div>  
+          </mat-cell>
+        </ng-container>
+  
+        
+        <ng-container matColumnDef="ÁLBUM" *ngIf="!isMobile">
+          <th style="text-align: left;color: #ffffff; font-family: 'Titan One', cursive; font-weight: bold;" mat-header-cell *matHeaderCellDef> ÁLBUM </th>
+          <td mat-cell *matCellDef="let element"><div class="letters-data">{{element.track?.album?.name}}</div></td>
+        </ng-container>
+  
+        
+        <ng-container matColumnDef="FECHA INCORPORACIÓN" *ngIf="!isMobile">
+          <th style="text-align: left;color: #ffffff; font-family: 'Titan One', cursive; font-weight: bold;" mat-header-cell *matHeaderCellDef> FECHA INCORPORACIÓN </th>
+          <td mat-cell *matCellDef="let element"> 
+          <div class="letters-data"> {{element.added_at}} </div>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </section>
+  </div>-->

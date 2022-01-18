@@ -75,7 +75,7 @@
     margin: 0 auto !important;
     max-width: 1920px;
     text-align: center;
-    padding: 3% 7%;
+    padding: 5% 7%;
     box-sizing: border-box;
     min-height: 100vh;
 }
@@ -83,7 +83,7 @@
 .example-card {
     max-width: 400px;
     margin-bottom: 8px;
-    background: linear-gradient(to bottom left, white, #262833);
+    background: linear-gradient(to top right, white, #262833);
 }
 
 .header-playlist
@@ -94,7 +94,7 @@
 }
 table {
     width: 100%;
-    background: #262833;
+    background: linear-gradient(to top right, white, #262833);
     
   }
 
@@ -103,6 +103,7 @@ table {
       color: #ffffff;
       font-family: 'Titan One', cursive;
       font-weight: 900;
+      display: flex;
       margin-left: 17px;
   }
   
@@ -110,9 +111,9 @@ table {
   {
       color: #ffffff;
       font-family: 'Titan One', cursive;
+      display: flex;
       margin-left: 17px;
   }
-
   .letters-data
   {
       font-size: small;
@@ -138,11 +139,6 @@ table {
     width: 48px;
     font-size: 48px;
     padding: 0 1%;
-    color: #ffffff;
-  }
-  .filas:hover
-  {
-    background: linear-gradient(to bottom left, white, #262833);
   }
 
 
@@ -169,25 +165,6 @@ table {
 .example-card {
     max-width: 1920px;
     margin-bottom: 8px;
-}
-
-.title-playlist
-{
-    color: #ffffff;
-    font-family: 'Titan One', cursive;
-    font-weight: 900;
-    display: flex;
-    margin-left: 17px;
-    font-size: 2rem;
-    margin-bottom: 14px;
-}
-.description-playlist
-{
-    color: #ffffff;
-    font-family: 'Titan One', cursive;
-    margin-left: 17px;
-    text-align: left;
-    margin-bottom: 1%;
 }
 
 

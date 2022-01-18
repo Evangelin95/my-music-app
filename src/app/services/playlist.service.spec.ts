@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
-import { UserprofileService } from './userprofile.service';
+import { PlaylistService } from './playlist.service';
 
 let httpClientSpy: { get: jasmine.Spy };
 
-describe('UserprofileService', () => {
-  let service: UserprofileService;
+describe('GetplaylistimgService', () => {
+  let service: PlaylistService;
 
   beforeEach(() => {
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
@@ -14,7 +14,7 @@ describe('UserprofileService', () => {
       providers: [
         { provide: HttpClient, useValue: httpClientSpy },]
     });
-    service = TestBed.inject(UserprofileService);
+    service = TestBed.inject(PlaylistService);
   });
 
   it('should be created', () => {
