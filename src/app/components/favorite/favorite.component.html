@@ -1,4 +1,4 @@
-<!--<div class="container-home">
+<div class="container-home">
     <mat-toolbar class="header-app">
       <img src="/assets/iconmusic.png" width="50px">
       <span class="name-app"><a routerLink="/home" style="text-decoration: none; color: #ffffff;">MyMusicApp</a></span>
@@ -15,7 +15,7 @@
             <span class="name-user-mobile">{{nombre}}</span>
           </button>
           <button mat-menu-item>
-            <mat-icon>favorite</mat-icon>
+            <mat-icon style="color: #ffffff; background: linear-gradient(to bottom left, white, #ff73a6);">favorite</mat-icon>
             <span><a style="text-decoration: none; color: inherit;" routerLink="/favorite">Tus favoritos</a></span>
           </button>
           <button mat-menu-item>
@@ -29,14 +29,13 @@
     <section class="main">
       <mat-card class="example-card">
         <mat-card-title-group class="header-playlist">
-          <mat-card-title class="title-playlist">{{nameplaylist}}</mat-card-title>
-          <mat-card-subtitle class="description-playlist">{{desplaylist}}</mat-card-subtitle>
-          <mat-card-subtitle>Type list</mat-card-subtitle>
-          <img style="margin-bottom: 5%;" mat-card-lg-image src={{imgplaylist}}>
+          <mat-card-title class="title-playlist">Tus favoritos</mat-card-title>
+          <mat-card-subtitle class="description-playlist"></mat-card-subtitle>
+          <mat-card-subtitle class="description-playlist"><span style="font-weight: bold;">{{nombre}} </span>&nbsp; * {{totalsong}}&nbsp; <span>canciones</span></mat-card-subtitle>
+          <mat-icon class="icon-main-favorite">favorite</mat-icon>
         </mat-card-title-group>
         <mat-card-content style="display: flex;">
           <mat-icon class="iconsplaylist">play_circle_outline</mat-icon>
-          <mat-icon class="iconheart">favorite_border</mat-icon>
         </mat-card-content>
       </mat-card>
   
@@ -75,7 +74,7 @@
         </ng-container>
   
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr class="filas" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
     </section>
-  </div>-->
+  </div>

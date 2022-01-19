@@ -15,6 +15,6 @@ export class WelcomeComponent implements OnInit {
   }
 
   login() {
-    window.open("https://accounts.spotify.com/authorize?client_id=71e5eaa5123b45219bb4e9be64f1f4d3&redirect_uri=http://localhost:4200/home&response_type=token","_self");
+    window.open("https://accounts.spotify.com/authorize?client_id=71e5eaa5123b45219bb4e9be64f1f4d3&scope=user-read-private,user-read-email,playlist-modify-public,user-library-read,user-library-modify&redirect_uri=http://localhost:4200/home&response_type=token","_self");
   }
 }

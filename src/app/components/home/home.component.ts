@@ -1,6 +1,7 @@
 import { Component, DoCheck, HostListener, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { PlaylistService } from 'src/app/services/playlist.service';
+import { TracklistService } from 'src/app/services/tracklist.service';
 import { UserprofileService } from 'src/app/services/userprofile.service';
 
 @Component({
@@ -26,7 +27,8 @@ export class HomeComponent implements OnInit {
   temLements: any[] = [];
 
   constructor(private profileService: UserprofileService,
-    private playList: PlaylistService) { }
+    private playList: PlaylistService,
+    private trackfavorite: TracklistService) { }
 
 
   ngOnInit(): void {
@@ -44,7 +46,7 @@ export class HomeComponent implements OnInit {
     this.token = ""+localStorage.getItem('access_token');
     //console.log(this.token);
 
-    //this.GetDataUser();
+    this.GetDataUser();
     this.GetDataPlaylist();
   }
 
@@ -63,6 +65,7 @@ export class HomeComponent implements OnInit {
 
       this.dataSource = response.tracks.items;
       this.temLements = response.tracks.items;
+      console.log(this.temLements);
 
     },
       error => {
@@ -80,7 +83,6 @@ export class HomeComponent implements OnInit {
         console.log(error);
       })
   }
-  
 
   @HostListener('window:resize', ['$event'])
   getScreenSize() {
@@ -93,6 +95,23 @@ export class HomeComponent implements OnInit {
       this.displayedColumns = ['#', 'TÍTULO', 'ÁLBUM', 'FECHA INCORPORACIÓN'];
     }
   }
+
+  getFavorite(row:any)
+  {
+    this.trackfavorite.putTrackFavorite(this.token,row.track.id).subscribe(response => {
+      console.log(response);
+    },
+      error => {
+        console.log(error);
+      })
+    console.log(row.track.id);
+  }
+  
+  validateFavorite(element:any)
+  {
+    return true;
+  }
+  
 
 
 

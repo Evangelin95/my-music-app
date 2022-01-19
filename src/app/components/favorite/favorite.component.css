@@ -94,7 +94,7 @@
 }
 table {
     width: 100%;
-    background: linear-gradient(to top right, white, #262833);
+    background: #262833;
     
   }
 
@@ -141,6 +141,23 @@ table {
     padding: 0 1%;
   }
 
+  .icon-main-favorite
+{
+    color: #ffffff;
+    background: linear-gradient(to bottom left, white, #ff73a6);
+    width: 152px;
+    height: 152px;
+    margin-bottom: 5%;
+    font-size: 76px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.filas:hover
+{
+  background: linear-gradient(to bottom left, white, #262833);
+}
+
 
 
 
@@ -166,6 +183,8 @@ table {
     max-width: 1920px;
     margin-bottom: 8px;
 }
+
+
 
 
 
