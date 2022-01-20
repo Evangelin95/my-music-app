@@ -51,7 +51,7 @@
         <ng-container matColumnDef="TÍTULO">
           <th mat-header-cell *matHeaderCellDef style="text-align: left; color: #ffffff; font-family: 'Titan One', cursive; font-weight: bold;"> TÍTULO</th>
           <mat-cell *matCellDef="let element" style="display: flex; padding: 0 4px;">
-            <img [src]="element.track?.album?.images[2].url" style="height: 40px;width: 40px;" />
+            <img [src]="element.track?.album?.images[2].url" style="height: 40px;width: 40px;margin-right: 8px;" />
             <div>
               <div class="letters-data" >{{element.track?.album?.name}}</div>
               <div class="letters-data" >{{element.track?.artists[0].name}},{{element.track?.artists[1]?.name}},{{element.track?.artists[2]?.name}}</div>

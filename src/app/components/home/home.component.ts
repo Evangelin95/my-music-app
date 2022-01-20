@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   like = "";
   song = "";
   token = "";
+  favorite:any[] = [];
 
   displayedColumns: string[] = ['#', 'TÍTULO', 'ÁLBUM', 'FECHA INCORPORACIÓN'];
   dataSource = new MatTableDataSource();
@@ -48,6 +49,7 @@ export class HomeComponent implements OnInit {
 
     this.GetDataUser();
     this.GetDataPlaylist();
+    this.getDataTrack();
   }
 
   GetDataPlaylist()
@@ -96,20 +98,36 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  getFavorite(row:any)
+  putFavorite(row:any)
   {
     this.trackfavorite.putTrackFavorite(this.token,row.track.id).subscribe(response => {
       console.log(response);
+      this.favorite.push(row.track.id);
     },
       error => {
         console.log(error);
       })
     console.log(row.track.id);
   }
+
+  getDataTrack()
+  {
+    this.trackfavorite.getListFavorite(this.token).subscribe(response => {
+      console.log(response);
+
+      for (let iterator of response.items) {
+        this.favorite.push(iterator.track.id)
+      }
+    },
+      error => {
+        console.log(error);
+    })
+  }
   
   validateFavorite(element:any)
   {
-    return true;
+    console.log(element.track.id); 
+    return this.favorite.includes(element.track.id);
   }
   
 

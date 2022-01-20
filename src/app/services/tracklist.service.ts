@@ -25,8 +25,6 @@ export class TracklistService {
 
   putTrackFavorite(token:string,id:string):Observable<any>
   {
-    console.log(token);
-    console.log(id);
     this.httpoptions.headers = this.httpoptions.headers.set('Authorization', 'Bearer ' +token);
     this.httpoptions.params = this.httpoptions.params.set('ids', id);
     return this.http.put('https://api.spotify.com/v1/me/tracks',null, this.httpoptions);

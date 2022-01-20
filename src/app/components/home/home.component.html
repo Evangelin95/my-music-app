@@ -70,7 +70,7 @@
       <ng-container matColumnDef="FECHA INCORPORACIÓN" *ngIf="!isMobile">
         <th style="text-align: left;color: #ffffff; font-family: 'Titan One', cursive; font-weight: bold;" mat-header-cell *matHeaderCellDef> FECHA INCORPORACIÓN </th>
         <td mat-cell *matCellDef="let element"> 
-        <div class="letters-data">{{element.added_at}} &nbsp;<mat-icon (click)="getFavorite(element)" style="color: #262833; cursor: pointer;">{{validateFavorite(element)?'favorite_border':'favorite'}}</mat-icon></div>
+        <div class="letters-data">{{element.added_at}} &nbsp;<mat-icon (click)="putFavorite(element)" style="color: #ff73a6; cursor: pointer;">{{validateFavorite(element)?'favorite':'favorite_border'}}</mat-icon></div>
         </td>
       </ng-container>
 
