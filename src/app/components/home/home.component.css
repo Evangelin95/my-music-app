@@ -145,6 +145,11 @@ table {
     background: linear-gradient(to bottom left, white, #262833);
   }
 
+  .favorites
+{
+    display: none;
+}
+
 
 
 
@@ -190,6 +195,19 @@ table {
     margin-bottom: 1%;
 }
 
+.btn-name-person {
+    display: none !important;
+}
+
+.favorites-mobile
+{
+    display: none;
+}
+
+.favorites
+{
+    display: inline-block;
+}
 
 
 

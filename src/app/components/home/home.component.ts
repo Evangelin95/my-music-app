@@ -1,5 +1,6 @@
 import { Component, DoCheck, HostListener, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import * as moment from 'moment';
 import { PlaylistService } from 'src/app/services/playlist.service';
 import { TracklistService } from 'src/app/services/tracklist.service';
 import { UserprofileService } from 'src/app/services/userprofile.service';
@@ -22,6 +23,8 @@ export class HomeComponent implements OnInit {
   song = "";
   token = "";
   favorite:any[] = [];
+  totalsong ="";
+
 
   displayedColumns: string[] = ['#', 'TÍTULO', 'ÁLBUM', 'FECHA INCORPORACIÓN'];
   dataSource = new MatTableDataSource();
@@ -67,7 +70,7 @@ export class HomeComponent implements OnInit {
 
       this.dataSource = response.tracks.items;
       this.temLements = response.tracks.items;
-      console.log(this.temLements);
+      //console.log(this.temLements);
 
     },
       error => {
@@ -107,14 +110,14 @@ export class HomeComponent implements OnInit {
       error => {
         console.log(error);
       })
-    console.log(row.track.id);
+    //console.log(row.track.id);
   }
 
   getDataTrack()
   {
     this.trackfavorite.getListFavorite(this.token).subscribe(response => {
       console.log(response);
-
+      this.totalsong = response.total;
       for (let iterator of response.items) {
         this.favorite.push(iterator.track.id)
       }
@@ -126,7 +129,7 @@ export class HomeComponent implements OnInit {
   
   validateFavorite(element:any)
   {
-    console.log(element.track.id); 
+    //console.log(element.track.id); 
     return this.favorite.includes(element.track.id);
   }
   

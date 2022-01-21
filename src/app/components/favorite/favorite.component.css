@@ -184,6 +184,10 @@ table {
     margin-bottom: 8px;
 }
 
+.btn-name-person {
+    display: none !important;
+}
+
 
 
 
