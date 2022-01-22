@@ -113,6 +113,21 @@ export class HomeComponent implements OnInit {
     //console.log(row.track.id);
   }
 
+  deleteFavorite(row:any)
+  {
+    this.trackfavorite.deleteTrackFavorite(this.token,row.track.id).subscribe(response => {
+      console.log(response);
+      let position: number;
+      position = this.favorite.indexOf(row.track.id);
+      console.log(position);
+      this.favorite.splice(position,1);
+    },
+      error => {
+        console.log(error);
+      })
+    //console.log(row.track.id);
+  }
+
   getDataTrack()
   {
     this.trackfavorite.getListFavorite(this.token).subscribe(response => {
@@ -120,7 +135,9 @@ export class HomeComponent implements OnInit {
       this.totalsong = response.total;
       for (let iterator of response.items) {
         this.favorite.push(iterator.track.id)
+        console.log(iterator.track.id);
       }
+      
     },
       error => {
         console.log(error);
@@ -129,8 +146,22 @@ export class HomeComponent implements OnInit {
   
   validateFavorite(element:any)
   {
-    //console.log(element.track.id); 
-    return this.favorite.includes(element.track.id);
+    console.log(element.track.id);
+    let contfavorite : Boolean;
+    contfavorite = this.favorite.includes(element.track.id);
+    if(contfavorite == true)
+    {
+      this.deleteFavorite(element);
+    }
+    else
+    {
+      this.putFavorite(element);
+    }
+  }
+
+  isFavorite(element:any)
+  {
+     return this.favorite.includes(element.track.id);
   }
   
 
