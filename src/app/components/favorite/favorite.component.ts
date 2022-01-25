@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { AuthGuardServiceService } from 'src/app/services/guard/auth-guard-service.service';
 import { PlaylistService } from 'src/app/services/playlist.service';
 import { TracklistService } from 'src/app/services/tracklist.service';
 import { UserprofileService } from 'src/app/services/userprofile.service';
@@ -23,7 +24,8 @@ export class FavoriteComponent implements OnInit {
   dataSource = new MatTableDataSource();
 
   constructor(private profileService: UserprofileService,
-    private trackService: TracklistService) { }
+    private trackService: TracklistService,
+    private authGuardService: AuthGuardServiceService) { }
 
     
 
@@ -57,6 +59,7 @@ export class FavoriteComponent implements OnInit {
     },
       error => {
         console.log(error);
+        this.authGuardService.isTokenExpired(error);
       })
   }
 
@@ -69,6 +72,7 @@ export class FavoriteComponent implements OnInit {
     },
       error => {
         console.log(error);
+        this.authGuardService.isTokenExpired(error);
     })
   }
 

@@ -13,8 +13,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import {HttpClientModule} from '@angular/common/http';
+import { AuthGuardServiceService } from './services/guard/auth-guard-service.service';
 
 
 
@@ -35,10 +37,11 @@ import {HttpClientModule} from '@angular/common/http';
     MatCardModule,
     MatMenuModule,
     MatTableModule,
+    MatSnackBarModule,
     HttpClientModule
   ],
 
-  providers: [],
+  providers: [AuthGuardServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
