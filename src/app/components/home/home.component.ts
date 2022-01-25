@@ -1,6 +1,8 @@
 import { Component, DoCheck, HostListener, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import * as moment from 'moment';
+import { AuthGuardServiceService } from 'src/app/services/guard/auth-guard-service.service';
 import { PlaylistService } from 'src/app/services/playlist.service';
 import { TracklistService } from 'src/app/services/tracklist.service';
 import { UserprofileService } from 'src/app/services/userprofile.service';
@@ -32,7 +34,9 @@ export class HomeComponent implements OnInit {
 
   constructor(private profileService: UserprofileService,
     private playList: PlaylistService,
-    private trackfavorite: TracklistService) { }
+    private trackfavorite: TracklistService,
+    private authGuardService: AuthGuardServiceService,
+    ) { }
 
 
   ngOnInit(): void {
@@ -45,6 +49,7 @@ export class HomeComponent implements OnInit {
       /*console.log(url)*/
       console.log(url[0].split("=")[1]);
       localStorage.setItem('access_token',url[0].split("=")[1]);
+      localStorage.setItem('auth','true');
     }
 
     this.token = ""+localStorage.getItem('access_token');
@@ -75,6 +80,7 @@ export class HomeComponent implements OnInit {
     },
       error => {
         console.log(error);
+        this.authGuardService.isTokenExpired(error);
       })
   }
 
@@ -86,6 +92,7 @@ export class HomeComponent implements OnInit {
     },
       error => {
         console.log(error);
+        this.authGuardService.isTokenExpired(error);
       })
   }
 
@@ -109,6 +116,7 @@ export class HomeComponent implements OnInit {
     },
       error => {
         console.log(error);
+        this.authGuardService.isTokenExpired(error);
       })
     //console.log(row.track.id);
   }
@@ -124,6 +132,7 @@ export class HomeComponent implements OnInit {
     },
       error => {
         console.log(error);
+        this.authGuardService.isTokenExpired(error);
       })
     //console.log(row.track.id);
   }
@@ -141,6 +150,7 @@ export class HomeComponent implements OnInit {
     },
       error => {
         console.log(error);
+        this.authGuardService.isTokenExpired(error);
     })
   }
   
