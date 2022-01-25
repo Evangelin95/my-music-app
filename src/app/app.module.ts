@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { WelcomeComponent } from './components/welcome/welcome.component';
-import { FavoriteComponent } from './components/favorite/favorite.component';
+import { HomeComponent } from './pages/home/home.component';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { FavoriteComponent } from './pages/favorite/favorite.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
