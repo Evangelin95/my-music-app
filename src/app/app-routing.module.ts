@@ -8,7 +8,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 const routes: Routes = [
   {path: '', component: WelcomeComponent },
   {path: 'welcome', component: WelcomeComponent },
-  {path: 'home', canActivate:[AuthGuardGuard], component: HomeComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'favorite',canActivate:[AuthGuardGuard], component: FavoriteComponent}
 ];
 
