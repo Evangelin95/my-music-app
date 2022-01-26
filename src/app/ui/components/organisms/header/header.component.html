@@ -1,0 +1,26 @@
+<mat-toolbar class="header-app">
+    <img src="/assets/iconmusic.png" width="50px">
+    <span class="name-app"><a routerLink="/home" style="text-decoration: none; color: #ffffff;">MyMusicApp</a></span>
+    <span class="example-spacer"></span>
+    <button class="btn-user">
+      <mat-icon>person</mat-icon>
+      <span class="name-user">{{nombre}}</span>
+      <button class="btn-desplegable" mat-icon-button [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu">
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu class="list-options" #menu="matMenu">
+        <button class="btn-name-person" mat-menu-item>
+          <span class="name-user-mobile">{{nombre}}</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon style="color: #ffffff; background: linear-gradient(to bottom left, white, #ff73a6);">favorite</mat-icon>
+          <span><a style="text-decoration: none; color: inherit;" routerLink="/favorite">Tus favoritos</a></span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>exit_to_app</mat-icon>
+          <span><a style="text-decoration: none; color: inherit;" routerLink="/welcome">Cerrar sesión</a></span>
+        </button>
+      </mat-menu>
+    </button>
+  </mat-toolbar>

@@ -1,5 +1,6 @@
 <div class="container-home">
-    <mat-toolbar class="header-app">
+  <app-header [nombre] = "nombre"></app-header>
+    <!--<mat-toolbar class="header-app">
       <img src="/assets/iconmusic.png" width="50px">
       <span class="name-app"><a routerLink="/home" style="text-decoration: none; color: #ffffff;">MyMusicApp</a></span>
       <span class="example-spacer"></span>
@@ -24,7 +25,7 @@
           </button>
         </mat-menu>
       </button>
-    </mat-toolbar>
+    </mat-toolbar>-->
   
     <section class="main">
       <mat-card class="example-card">
@@ -38,9 +39,10 @@
           <mat-icon class="iconsplaylist">play_circle_outline</mat-icon>
         </mat-card-content>
       </mat-card>
-  
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        
+
+
+      <app-table-listmusic [dataSource]="dataSource" ></app-table-listmusic>
+      <!--<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="#">
           <th style="padding: 0 12px; color: #ffffff; font-family: 'Titan One', cursive; font-weight: bold;" mat-header-cell *matHeaderCellDef> # </th>
           <td style="padding: 0 12px;" mat-cell *matCellDef="let element; let i = index"> 
@@ -75,6 +77,6 @@
   
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr class="filas" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+      </table>-->
     </section>
   </div>

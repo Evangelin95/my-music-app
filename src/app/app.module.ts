@@ -17,6 +17,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import {HttpClientModule} from '@angular/common/http';
 import { AuthGuardServiceService } from './services/guard/auth-guard-service.service';
+import { HeaderComponent } from './ui/components/organisms/header/header.component';
+import { CardListmusicComponent } from './ui/components/organisms/card-listmusic/card-listmusic.component';
+import { TableListmusicComponent } from './ui/components/organisms/table-listmusic/table-listmusic.component';
 
 
 
@@ -26,6 +29,9 @@ import { AuthGuardServiceService } from './services/guard/auth-guard-service.ser
     WelcomeComponent,
     AppComponent,
     FavoriteComponent,
+    HeaderComponent,
+    CardListmusicComponent,
+    TableListmusicComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 <div class="container-home">
-  <mat-toolbar class="header-app">
+  <app-header [nombre] = "nombre"></app-header>
+  <!--<mat-toolbar class="header-app">
     <img src="/assets/iconmusic.png" width="50px">
     <span class="name-app"><a routerLink="/home" style="text-decoration: none; color: #ffffff;">MyMusicApp</a></span>
     <span class="example-spacer"></span>
@@ -24,10 +25,11 @@
         </button>
       </mat-menu>
     </button>
-  </mat-toolbar>
+  </mat-toolbar>-->
 
   <section class="main">
-    <mat-card class="example-card">
+    <app-card-listmusic [nameplaylist]="nameplaylist" [desplaylist]="desplaylist" [imgplaylist]="imgplaylist" [spotify]="spotify" [like]="like" [song]="song"></app-card-listmusic>
+    <!--<mat-card class="example-card">
       <mat-card-title-group class="header-playlist">
         <mat-card-title class="title-playlist">{{nameplaylist}}</mat-card-title>
         <mat-card-subtitle class="description-playlist">{{desplaylist}}</mat-card-subtitle>
@@ -38,9 +40,11 @@
         <mat-icon class="iconsplaylist">play_circle_outline</mat-icon>
         <mat-icon class="iconheart">favorite_border</mat-icon>
       </mat-card-content>
-    </mat-card>
+    </mat-card>-->
 
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <app-table-listmusic [dataSource]="dataSource"></app-table-listmusic>
+
+    <!--<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
      
       <ng-container matColumnDef="#">
         <th style="padding: 0 12px; color: #ffffff; font-family: 'Titan One', cursive; font-weight: bold;" mat-header-cell *matHeaderCellDef> # </th>
@@ -57,7 +61,7 @@
             <div class="letters-data" >{{element.track?.album?.name}}</div>
             <div class="letters-data" >{{element.track?.artists[0].name}},{{element.track?.artists[1]?.name}},{{element.track?.artists[2]?.name}}</div>
           </div>  
-          <!--<div><mat-icon class="favorites-mobile" (click)="putFavorite(element)" style="color: #ff73a6; cursor: pointer; font-size: 18px;">{{validateFavorite(element)?'favorite':'favorite_border'}}</mat-icon></div>-->
+          <div><mat-icon class="favorites-mobile" (click)="putFavorite(element)" style="color: #ff73a6; cursor: pointer; font-size: 18px;">{{validateFavorite(element)?'favorite':'favorite_border'}}</mat-icon></div>
         </mat-cell>
       </ng-container>
 
@@ -77,6 +81,6 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr class="filas" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    </table>-->
   </section>
 </div>

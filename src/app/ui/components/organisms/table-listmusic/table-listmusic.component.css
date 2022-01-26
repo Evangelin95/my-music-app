@@ -1,0 +1,18 @@
+table 
+{
+    width: 100%;
+    background: #262833; 
+}
+
+.letters-data
+{
+    font-size: small;
+    text-align: left;
+    color: #ffffff;
+    font-family: 'Titan One', cursive;
+}
+
+.filas:hover
+{
+  background: linear-gradient(to bottom left, white, #262833);
+}
