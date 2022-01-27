@@ -1,5 +1,5 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { AuthGuardServiceService } from 'src/app/services/guard/auth-guard-service.service';
 import { PlaylistService } from 'src/app/services/playlist.service';
@@ -49,6 +49,18 @@ export class TableListmusicComponent implements OnInit {
     //console.log(this.token);
 
     this.getDataTrack();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  getScreenSize() {
+    if (window.innerWidth <= 480) {
+      this.isMobile = true
+      this.displayedColumns = ['#', 'TÍTULO'];
+    }
+    else{
+      this.isMobile = false
+      this.displayedColumns = ['#', 'TÍTULO', 'ÁLBUM', 'FECHA INCORPORACIÓN'];
+    }
   }
 
   putFavorite(row:any)
