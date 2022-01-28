@@ -1,11 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { AuthGuardServiceService } from 'src/app/services/guard/auth-guard-service.service';
-import { PlaylistService } from 'src/app/services/playlist.service';
 import { TracklistService } from 'src/app/services/tracklist.service';
 import { UserprofileService } from 'src/app/services/userprofile.service';
-
-
 
 @Component({
   selector: 'app-favorite',
@@ -20,14 +17,11 @@ export class FavoriteComponent implements OnInit {
   isMobile = false;
   totalsong = "";
 
-  displayedColumns: string[] = ['#', 'TÍTULO', 'ÁLBUM', 'FECHA INCORPORACIÓN'];
   dataSource = new MatTableDataSource();
 
   constructor(private profileService: UserprofileService,
     private trackService: TracklistService,
     private authGuardService: AuthGuardServiceService) { }
-
-    
 
   ngOnInit(): void {
     
@@ -37,18 +31,6 @@ export class FavoriteComponent implements OnInit {
   this.GetDataUser();
   this.getDataTrack();
 
-  }
-
-  @HostListener('window:resize', ['$event'])
-  getScreenSize() {
-    if (window.innerWidth <= 480) {
-      this.isMobile = true
-      this.displayedColumns = ['#', 'TÍTULO'];
-    }
-    else{
-      this.isMobile = false
-      this.displayedColumns = ['#', 'TÍTULO', 'ÁLBUM', 'FECHA INCORPORACIÓN'];
-    }
   }
 
   GetDataUser()

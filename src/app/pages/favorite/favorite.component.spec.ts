@@ -12,12 +12,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { HomeComponent } from '../home/home.component';
 import { AuthGuardGuard } from 'src/app/services/guard/auth-guard.guard';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-/*let responseUserProfile = DATA_TEST_USERPROFILE;
+let responseUserProfile = DATA_TEST_USERPROFILE;
 let responseTrackFavorite = DATA_TEST_LISTFAVORITE;
 
 let spyProfileService = { getProfileUser: () => { return {subscribe: () => {} } } };
-let spyTrackFavorite  = { getListFavorite: () => { return {subscribe: () => {} } }};*/
+let spyTrackFavorite  = { getListFavorite: () => { return {subscribe: () => {} } }};
 
 describe('FavoriteComponent', () => {
   let component: FavoriteComponent;
@@ -25,16 +26,17 @@ describe('FavoriteComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      /*providers: [
+      providers: [
         { provide: UserprofileService, useValue: spyProfileService },
         { provide: TracklistService, userValue: spyTrackFavorite},
-      ],*/
+      ],
       imports: [ HttpClientTestingModule,MatMenuModule,MatSnackBarModule,RouterTestingModule.withRoutes(
         [{path: '', component: WelcomeComponent },
         {path: 'welcome', component: WelcomeComponent },
         {path: 'home', component: HomeComponent},
         {path: 'favorite',canActivate:[AuthGuardGuard], component: FavoriteComponent}]
       )],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [ FavoriteComponent ]
     })
     .compileComponents();
@@ -43,20 +45,20 @@ describe('FavoriteComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(FavoriteComponent);
     component = fixture.componentInstance;
-    /*spyProfileService = TestBed.get(UserprofileService);
-    spyTrackFavorite = TestBed.get(TracklistService);*/
+    spyProfileService = TestBed.get(UserprofileService);
+    spyTrackFavorite = TestBed.get(TracklistService);
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    /*fakeAsync(() => {
+  it('should create', 
+    fakeAsync(() => {
       spyOn(spyProfileService, 'getProfileUser').and.returnValue({ subscribe: () => {} });
       spyOn(spyTrackFavorite, 'getListFavorite').and.returnValue({ subscribe: () => {} });
-      tick();*/
+      tick();
       expect(component).toBeTruthy();
-  });
+  }));
 
-  /*describe('GetDataPlaylist()', () => {
+  describe('GetDataPlaylist()', () => {
     it('When the UserProfile service is consumed and does not respond with the expected data',  
     fakeAsync(() => {
       spyOn(spyProfileService, 'getProfileUser').and.returnValue(defer(() => Promise.resolve(responseUserProfile)));
@@ -73,6 +75,6 @@ describe('FavoriteComponent', () => {
        expect(component.totalsong.toString()).toEqual(responseTrackFavorite.total.toString());
     }));
 
-  });*/
+  });
 
 });

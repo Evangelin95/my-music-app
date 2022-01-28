@@ -1,10 +1,7 @@
 import { Component, DoCheck, HostListener, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
-import * as moment from 'moment';
 import { AuthGuardServiceService } from 'src/app/services/guard/auth-guard-service.service';
 import { PlaylistService } from 'src/app/services/playlist.service';
-import { TracklistService } from 'src/app/services/tracklist.service';
 import { UserprofileService } from 'src/app/services/userprofile.service';
 
 @Component({
@@ -19,14 +16,10 @@ export class HomeComponent implements OnInit {
   nameplaylist = ""
   imgplaylist = "";
   list = "";
-  isMobile = false;
   spotify = "";
   like = "";
   song = "";
   token = "";
-  favorite:any[] = [];
-  totalsong ="";
-
 
   displayedColumns: string[] = ['#', 'TÍTULO', 'ÁLBUM', 'FECHA INCORPORACIÓN'];
   dataSource = new MatTableDataSource();
@@ -34,7 +27,6 @@ export class HomeComponent implements OnInit {
 
   constructor(private profileService: UserprofileService,
     private playList: PlaylistService,
-    private trackfavorite: TracklistService,
     private authGuardService: AuthGuardServiceService,
     ) { }
 
@@ -46,18 +38,15 @@ export class HomeComponent implements OnInit {
     {
       let hash = window.location.hash.substring(1);
       let url = hash.substring(1).split("&");
-      /*console.log(url)*/
       console.log(url[0].split("=")[1]);
       localStorage.setItem('access_token',url[0].split("=")[1]);
       localStorage.setItem('auth','true');
     }
 
     this.token = ""+localStorage.getItem('access_token');
-    //console.log(this.token);
 
     this.GetDataUser();
     this.GetDataPlaylist();
-    this.getDataTrack();
   }
 
   GetDataPlaylist()
@@ -71,11 +60,8 @@ export class HomeComponent implements OnInit {
       this.like = response.followers.total;
       this.song = response.tracks.total;
 
-      //this.list = response.tracks.items.track.album.images[0].url;
-
       this.dataSource = response.tracks.items;
       this.temLements = response.tracks.items;
-      //console.log(this.temLements);
 
     },
       error => {
@@ -95,86 +81,5 @@ export class HomeComponent implements OnInit {
         this.authGuardService.isTokenExpired(error);
       })
   }
-
-  @HostListener('window:resize', ['$event'])
-  getScreenSize() {
-    if (window.innerWidth <= 480) {
-      this.isMobile = true
-      this.displayedColumns = ['#', 'TÍTULO'];
-    }
-    else{
-      this.isMobile = false
-      this.displayedColumns = ['#', 'TÍTULO', 'ÁLBUM', 'FECHA INCORPORACIÓN'];
-    }
-  }
-
-  putFavorite(row:any)
-  {
-    this.trackfavorite.putTrackFavorite(this.token,row.track.id).subscribe(response => {
-      console.log(response);
-      this.favorite.push(row.track.id);
-    },
-      error => {
-        console.log(error);
-        this.authGuardService.isTokenExpired(error);
-      })
-    //console.log(row.track.id);
-  }
-
-  deleteFavorite(row:any)
-  {
-    this.trackfavorite.deleteTrackFavorite(this.token,row.track.id).subscribe(response => {
-      console.log(response);
-      let position: number;
-      position = this.favorite.indexOf(row.track.id);
-      console.log(position);
-      this.favorite.splice(position,1);
-    },
-      error => {
-        console.log(error);
-        this.authGuardService.isTokenExpired(error);
-      })
-    //console.log(row.track.id);
-  }
-
-  getDataTrack()
-  {
-    this.trackfavorite.getListFavorite(this.token).subscribe(response => {
-      console.log(response);
-      this.totalsong = response.total;
-      for (let iterator of response.items) {
-        this.favorite.push(iterator.track.id)
-        console.log(iterator.track.id);
-      }
-      
-    },
-      error => {
-        console.log(error);
-        this.authGuardService.isTokenExpired(error);
-    })
-  }
-  
-  validateFavorite(element:any)
-  {
-    console.log(element.track.id);
-    let contfavorite : Boolean;
-    contfavorite = this.favorite.includes(element.track.id);
-    if(contfavorite == true)
-    {
-      this.deleteFavorite(element);
-    }
-    else
-    {
-      this.putFavorite(element);
-    }
-  }
-
-  isFavorite(element:any)
-  {
-     return this.favorite.includes(element.track.id);
-  }
-  
-
-
 
 }

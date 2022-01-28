@@ -12,19 +12,20 @@ export class AuthGuardServiceService {
     
   }
 
-  loggInd: Boolean = false;
+  loggInd: boolean = false;
 
   constructor(private router: Router,
     private _snackBar: MatSnackBar) { }
 
   isAuthenticated()
   {
+    this.loggInd = false;
     if(localStorage.getItem('auth') === 'true')
     {
-      console.log("entro");
-       return this.loggInd = true;
+      console.log(localStorage.getItem('auth'));
+       this.loggInd = true;
     }
-    return this.loggInd = false;
+    return this.loggInd;
   }
 
   isTokenExpired(error:any)

@@ -1,3 +1,4 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CardListmusicComponent } from './card-listmusic.component';
@@ -8,6 +9,7 @@ describe('CardListmusicComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [ CardListmusicComponent ]
     })
     .compileComponents();

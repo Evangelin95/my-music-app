@@ -1,6 +1,6 @@
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { MatMenuModule } from '@angular/material/menu';
-import { DATA_TEST_LISTFAVORITE, DATA_TEST_PLAYLIST, DATA_TEST_USERPROFILE } from 'src/app/services/data-test';
+import { DATA_TEST_PLAYLIST, DATA_TEST_USERPROFILE } from 'src/app/services/data-test';
 import { PlaylistService } from 'src/app/services/playlist.service';
 import { UserprofileService } from 'src/app/services/userprofile.service';
 import { defer } from 'rxjs';
@@ -13,18 +13,13 @@ import { WelcomeComponent } from '../welcome/welcome.component';
 import { AuthGuardGuard } from 'src/app/services/guard/auth-guard.guard';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-/*let responsePlayList = DATA_TEST_PLAYLIST;
+let responsePlayList = DATA_TEST_PLAYLIST;
 let responseUserProfile = DATA_TEST_USERPROFILE;
-let responseTrackFavorite = DATA_TEST_LISTFAVORITE;
-
-
-//let profileServiceSpy: jasmine.SpyObj<UserprofileService>;
-//let playListSpy: jasmine.SpyObj<PlaylistService>;
 
 let spyPlayList = { getPlaylistImg: () => { return {subscribe: () => {} } } };
 let spyProfileService = { getProfileUser: () => { return {subscribe: () => {} } } };
-let spyTrackFavorite  = { getListFavorite: () => { return {subscribe: () => {} } }};*/
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -32,17 +27,17 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      /*providers: [
+      providers: [
         { provide: UserprofileService, useValue: spyProfileService },
         { provide: PlaylistService, useValue: spyPlayList },
-        { provide: TracklistService, userValue: spyTrackFavorite},
-      ],*/
+      ],
       imports: [HttpClientTestingModule,MatSnackBarModule,MatMenuModule,RouterTestingModule.withRoutes(
         [{path: '', component: WelcomeComponent },
         {path: 'welcome', component: WelcomeComponent },
         {path: 'home', component: HomeComponent},
         {path: 'favorite',canActivate:[AuthGuardGuard], component: FavoriteComponent}]
         )],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [ HomeComponent ]
     })
     .compileComponents();
@@ -51,22 +46,20 @@ describe('HomeComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
-    /*spyProfileService = TestBed.get(UserprofileService);
+    spyProfileService = TestBed.get(UserprofileService);
     spyPlayList = TestBed.get(PlaylistService);
-    spyTrackFavorite = TestBed.get(TracklistService);*/
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    /*fakeAsync(() => {
+  it('should create', 
+    fakeAsync(() => {
       spyOn(spyPlayList, 'getPlaylistImg').and.returnValue({ subscribe: () => {} });
       spyOn(spyProfileService, 'getProfileUser').and.returnValue({ subscribe: () => {} });
-      spyOn(spyTrackFavorite, 'getListFavorite').and.returnValue({ subscribe: () => {} });
-      tick();*/
+      tick();
       expect(component).toBeTruthy();
-  });
+  }));
 
-  /*describe('GetDataPlaylist()', () => {
+  describe('GetDataPlaylist()', () => {
     it('When the PlayList service is consumed and does not respond with the expected data',  
     fakeAsync(() => {
       spyOn(spyPlayList, 'getPlaylistImg').and.returnValue(defer(() => Promise.resolve(responsePlayList)));
@@ -83,14 +76,6 @@ describe('HomeComponent', () => {
        expect(component.nombre).toEqual(responseUserProfile.display_name);
     }));
 
-    it('When the TracklistService service is consumed and does not respond with the expected data',  
-    fakeAsync(() => {
-      spyOn(spyTrackFavorite, 'getListFavorite').and.returnValue(defer(() => Promise.resolve(responseTrackFavorite)));
-       component.getDataTrack();
-       tick();
-       expect(component.totalsong.toString()).toEqual(responseTrackFavorite.total.toString());
-    }));
-
-  });*/
+  });
   
 });

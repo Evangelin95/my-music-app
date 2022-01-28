@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -46,6 +46,8 @@ import { TableListmusicComponent } from './ui/components/organisms/table-listmus
     MatSnackBarModule,
     HttpClientModule
   ],
+
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
   providers: [AuthGuardServiceService],
   bootstrap: [AppComponent]
